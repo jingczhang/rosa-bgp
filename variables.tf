@@ -37,6 +37,11 @@ variable "vpc1-rosa_public_subnets" {
   default = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 }
 
+variable "rosa_private_only" {
+  type    = bool
+  default = false
+}
+
 variable "vpc2-ext_cidr" {
   default = "192.168.0.0/16"
 }

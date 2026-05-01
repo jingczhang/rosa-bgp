@@ -6,7 +6,7 @@ module "rosa-vpc" {
 
   azs = length(var.azs) > 0 ? var.azs : ["${var.aws_region}a", "${var.aws_region}b", "${var.aws_region}c"]
   private_subnets = var.vpc1-rosa_private_subnets
-  public_subnets  = var.vpc1-rosa_public_subnets
+  public_subnets  = var.rosa_private_only ? [] : var.vpc1-rosa_public_subnets
 
   enable_nat_gateway = true
   #  single_nat_gateway  = true

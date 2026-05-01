@@ -5,7 +5,7 @@ module "hcp" {
   cluster_name           = "${var.rosa_cluster_name}"
   openshift_version      = var.rosa_openshift_version
   machine_cidr           = module.rosa-vpc.vpc_cidr_block
-  aws_subnet_ids         = concat(module.rosa-vpc.public_subnets, module.rosa-vpc.private_subnets)
+  aws_subnet_ids         = var.rosa_private_only ? module.rosa-vpc.private_subnets : concat(module.rosa-vpc.public_subnets, module.rosa-vpc.private_subnets)
   aws_availability_zones = module.rosa-vpc.azs
   replicas               = length(module.rosa-vpc.azs)
   create_admin_user      = true
